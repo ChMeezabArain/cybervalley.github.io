@@ -15,10 +15,40 @@
       background: linear-gradient(135deg, #667eea, #764ba2);
       height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       overflow: hidden;
-    } 
+    }
+
+    /* CyberValley header on top with glow */
+    .app-title {
+      margin-top: 20px;
+      font-size: 32px;
+      color: white;
+      animation: glowUp 3s ease-in-out forwards;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    @keyframes glowUp {
+      0% {
+        color: #cccccc;
+        text-shadow: none;
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      50% {
+        color: #ffffff;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        opacity: 0.6;
+      }
+      100% {
+        color: #ffffff;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 
     .container {
       background-color: white;
@@ -27,6 +57,7 @@
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
       width: 340px;
       animation: fadeInUp 1s ease-out;
+      margin-top: 40px;
     }
 
     .hidden {
@@ -134,8 +165,13 @@
   </style>
 </head>
 <body>
+
+  <!-- App title on top -->
+  <div class="app-title">CyberValley</div>
+
+  <!-- Login Container -->
   <div class="container" id="loginContainer">
-    <h2>CyberValley Login</h2>
+    <h2>Login</h2>
     <form onsubmit="return checkLogin()">
       <div class="input-group">
         <label for="loginID">Username / Email / Contact</label>
@@ -154,6 +190,7 @@
     </form>
   </div>
 
+  <!-- Sign Up Container -->
   <div class="container hidden" id="signupContainer">
     <h2>Sign Up</h2>
     <form onsubmit="return registerUser()">
@@ -170,13 +207,9 @@
     </form>
   </div>
 
+  <!-- PDF Viewer -->
   <div class="pdf-container" id="pdfContainer">
-    <iframe 
-  class="pdf-frame" 
-  src="research.pdf#toolbar=0" 
-  title="PDF Viewer">
-</iframe>
-
+    <iframe class="pdf-frame" src="research.pdf#toolbar=0" title="PDF Viewer"></iframe>
   </div>
 
   <script>
